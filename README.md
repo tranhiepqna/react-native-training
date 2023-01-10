@@ -35,6 +35,14 @@ or Run app in the Android Emulator
 npx react-native run-android
 ```
 
+### Creating Login Page 
+### Creating Home Page 
+### Creating Profile Page
+### Setup Navigation
+- [] Setup React Navigation
+- [] Authentication flow
+- [] Setup Drawer
+
 ## Troubleshooting
 ### Your Ruby version is 2.6.8, but your Gemfile specified 2.7.5
 - https://stackoverflow.com/questions/74189532/your-ruby-version-is-2-6-8-but-your-gemfile-specified-2-7-5
