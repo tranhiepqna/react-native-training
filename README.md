@@ -12,27 +12,27 @@ We are going to build an app called "iPet". This is a social application for you
 ### Creating new application
 - We will start a new project using version 0.68.0, running the following command:
 ```sh
-	npx react-native init iPet --version 0.68.0
+npx react-native init iPet --version 0.68.0
 ```
 Don't worry if you are having a trouble with iOS try to reinstall the dependencies by running:
 ```sh
-	cd ios 
-	bundle install
-	bundle exec pod install
+cd ios 
+bundle install
+bundle exec pod install
 ```
 
 - Start Metro
 ```sh
-	npx react-native start
+npx react-native start
 ```
 
 - Run app in the iOS Simulator 
 ```sh 
-	npx react-native run-ios 
+npx react-native run-ios 
 ```
 or Run app in the Android Emulator
 ```sh
-	npx react-native run-android
+npx react-native run-android
 ```
 
 ## Troubleshooting
