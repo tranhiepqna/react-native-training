@@ -15,6 +15,7 @@ import {
   TextInput,
   Button,
   Text,
+  FlatList,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 
@@ -40,7 +41,7 @@ function LoginScreen() {
   );
 }
 
-function Item() {
+function Item({title, description}) {
   return (
     <View style={styles.itemContainer}>
       <View style={styles.itemView}>
@@ -52,19 +53,42 @@ function Item() {
         />
       </View>
       <View style={styles.itemView}>
-        <Text>Title</Text>
-        <Text>Description</Text>
+        <Text>{title}</Text>
+        <Text>{description}</Text>
       </View>
     </View>
   );
 }
 
+const DATA = [
+  {
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    title: 'First Item',
+    description: 'description 1',
+  },
+  {
+    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    title: 'Second Item',
+    description: 'description 2',
+  },
+  {
+    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    title: 'Third Item',
+    description: 'description 3',
+  },
+];
+
 function HomeScreen() {
+  const renderItem = ({item}) => (
+    <Item title={item.title} description={item.description} />
+  );
   return (
     <View style={styles.container}>
-      <Item />
-      <Item />
-      <Item />
+      <FlatList
+        data={DATA}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+      />
     </View>
   );
 }
