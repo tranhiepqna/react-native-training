@@ -16,6 +16,7 @@ import {
   Button,
   Text,
 } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 
 function LoginScreen() {
   return (
@@ -70,9 +71,11 @@ function HomeScreen() {
 
 function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <HomeScreen />
-    </SafeAreaView>
+    <NavigationContainer>
+      <SafeAreaView style={styles.container}>
+        <HomeScreen />
+      </SafeAreaView>
+    </NavigationContainer>
   );
 }
 const styles = StyleSheet.create({
