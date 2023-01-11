@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   StyleSheet,
@@ -18,8 +18,24 @@ import {
   FlatList,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-function LoginScreen() {
+function SplashScreen() {
+  return (
+    <View
+      style={[
+        styles.container,
+        {justifyContent: 'center', alignItems: 'center'},
+      ]}>
+      <Text>SplashScreen</Text>
+    </View>
+  );
+}
+
+function LoginScreen({setAppState}) {
+  const login = () => {
+    setAppState();
+  };
   return (
     <View style={styles.container}>
       <View style={styles.avatarView}>
@@ -34,7 +50,7 @@ function LoginScreen() {
         <TextInput style={styles.input} placeholder="User Name" />
         <TextInput style={styles.input} placeholder="Password" />
         <View style={styles.loginButtonView}>
-          <Button title="Login" color="#841584" />
+          <Button title="Login" color="#841584" onPress={login} />
         </View>
       </View>
     </View>
@@ -92,13 +108,36 @@ function HomeScreen() {
     </View>
   );
 }
+const Stack = createNativeStackNavigator();
 
 function App() {
+  const [appState, setAppState] = useState('loading');
+
+  useEffect(() => {
+    setTimeout(() => setAppState(''), 5000);
+  }, []);
+
+  if (appState == 'loading') {
+    return <SplashScreen />;
+  }
   return (
     <NavigationContainer>
-      <SafeAreaView style={styles.container}>
-        <HomeScreen />
-      </SafeAreaView>
+      <Stack.Navigator>
+        {appState == '' ? (
+          <>
+            <Stack.Screen
+              name="Login"
+              component={() => (
+                <LoginScreen setAppState={() => setAppState('abc')} />
+              )}
+            />
+          </>
+        ) : (
+          <>
+            <Stack.Screen name="Home" component={HomeScreen} />
+          </>
+        )}
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
