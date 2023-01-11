@@ -14,6 +14,7 @@ import {
   SafeAreaView,
   TextInput,
   Button,
+  Text,
 } from 'react-native';
 
 function LoginScreen() {
@@ -38,10 +39,39 @@ function LoginScreen() {
   );
 }
 
+function Item() {
+  return (
+    <View style={styles.itemContainer}>
+      <View style={styles.itemView}>
+        <Image
+          style={styles.imageItem}
+          source={{
+            uri: 'https://reactnative.dev/img/tiny_logo.png',
+          }}
+        />
+      </View>
+      <View style={styles.itemView}>
+        <Text>Title</Text>
+        <Text>Description</Text>
+      </View>
+    </View>
+  );
+}
+
+function HomeScreen() {
+  return (
+    <View style={styles.container}>
+      <Item />
+      <Item />
+      <Item />
+    </View>
+  );
+}
+
 function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <LoginScreen />
+      <HomeScreen />
     </SafeAreaView>
   );
 }
@@ -73,6 +103,16 @@ const styles = StyleSheet.create({
   loginButtonView: {
     alignItems: 'flex-end',
     marginRight: 12,
+  },
+  itemContainer: {
+    flexDirection: 'row',
+  },
+  itemView: {
+    flex: 1,
+  },
+  imageItem: {
+    height: 200,
+    margin: 12,
   },
 });
 
